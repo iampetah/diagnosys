@@ -12,7 +12,6 @@ $employee = $employeeModel->getEmployeeById($_SESSION['id']);
 $servicesModel = new ServicesModel();
 $services = $servicesModel->getAllServices();
 $requestModel = new RequestModel();
-
 $request_id = $_GET['request_id'];
 
 $request = $requestModel->getRequestById($request_id);
@@ -90,6 +89,11 @@ $request = $requestModel->getRequestById($request_id);
     overflow-y: scroll;
     height: 220px;
   }
+  .checkbox-inline {
+    -webkit-columns: 3;
+    -moz-columns: 3;
+    columns: 3;
+  }
 </style>
 
 <body>
@@ -148,16 +152,20 @@ $request = $requestModel->getRequestById($request_id);
                       </script>
                       <div class="fields">
                         <div class="input-field">
-                          <label>Lastname</label>
+                        <label>Lastname*(Jr.Sr. and etc...)</label>
                           <input type="text" id='last_name' name="request_lastname" placeholder="Enter your Lastame" required>
                         </div>
                         <input type="number" name="request_id" id="" value="<?php echo $request->id ?>" hidden>
                         <div class="input-field">
-                          <label>Firstname</label>
+                          <label>Firstname*</label>
                           <input type="text" id='first_name' name="request_firstname" placeholder="Enter your Firstname" required>
                         </div>
                         <div class="input-field">
-                          <label>Sex</label>
+                          <label>Middlename</label>
+                          <input type="text" id='first_name' name="request_midname" placeholder="Enter your Middlename">
+                        </div>
+                        <div class="input-field">
+                          <label>Sex*</label>
                           <select id='gender' required name="request_gender">
                             <option disabled selected>Select Sex</option>
                             <option value="Male">Male</option>
@@ -165,20 +173,32 @@ $request = $requestModel->getRequestById($request_id);
                           </select>
                         </div>
                         <div class="input-field">
-                          <label>Date of Birth</label>
+                          <label>Date of Birth*</label>
                           <input type="date" id="dob" name="request_birthdate" placeholder="Enter birth date" required>
                         </div>
                         <div class="input-field">
-                          <label>Age</label>
-                          <input type="number" onmousemove="FindAge()" id="age" name="request_age" placeholder="Your age " required>
+                          <label>Age*</label>
+                          <input type="number" onmousemove="FindAge()" id="age" name="request_age" placeholder="Your age " required readonly>
                         </div>
                         <div class="input-field">
-                          <label>Mobile Number</label>
+                          <label>Mobile Number*</label>
                           <input type="tel" id='mobile_number' name="request_phone" pattern="[0-9]{11}" pmaxlength="11" oninput="validateNumber(event)" placeholder="Enter mobile number" required>
                         </div>
 
                         <div class="input-field">
-                          <label>Province</label>
+                          <label>Building/ House Number</label>
+                          <input type="text" id="house_no" name="request_house_no" placeholder="Enter your Building/ House Number">
+                        </div>
+                        <div class="input-field">
+                          <label>Subdivision/Street Name</label>
+                          <input type="text" id="subdivision" name="request_subdivision" placeholder="Enter your Subdivision/Street Name">
+                        </div>
+                        <div class="input-field">
+                          <label>Purok*</label>
+                          <input type="text" id="purok" name="request_purok" placeholder="Enter your Purok" required>
+                        </div>
+                        <div class="input-field">
+                          <label>Province*</label>
                           <select required name="request_province" id="province">
                             <option disabled selected>Select Province</option>
 
@@ -186,7 +206,7 @@ $request = $requestModel->getRequestById($request_id);
                           </select>
                         </div>
                         <div class="input-field">
-                          <label>City</label>
+                          <label>City*</label>
                           <select required name="request_city" id="city">
                             <option disabled selected>Select City</option>
 
@@ -194,26 +214,17 @@ $request = $requestModel->getRequestById($request_id);
                           </select>
                         </div>
                         <div class="input-field">
-                          <label>Barangay</label>
+                          <label>Barangay*</label>
                           <select required name="request_barangay" id="barangay">
                             <option disabled selected>Select Barangay</option>
 
 
                           </select>
                         </div>
-                        <div class="input-field">
-                          <label>Purok</label>
-                          <input type="text" id="purok" name="request_purok" placeholder="Enter your Purok" required>
-                        </div>
-                        <div class="input-field">
-                          <label>Subdivision/Street Name</label>
-                          <input type="text" id="subdivision" name="request_subdivision" placeholder="Enter your Subdivision/Street Name">
-                        </div>
+                      
+                      
 
-                        <div class="input-field">
-                          <label>Building/ House Number</label>
-                          <input type="text" id="house_no" name="request_house_no" placeholder="Enter your Building/ House Number">
-                        </div>
+                       
                       </div>
                     </div>
 
@@ -231,13 +242,14 @@ $request = $requestModel->getRequestById($request_id);
 
 
                                 <div class="col-lg-12">
+
                                   <div class="row">
-                                    <div class="col">
+                                    <div class="col-sm-6">
                                       <h5>Select service</h5>
                                     </div>
-                                    <div class="col row">
+                                      <div class="col row">
                                       <select onchange="fillPackageServices()" id="package-select">
-                                        <option disabled selected>Select Package</option>
+                                        <option selected>Select Package</option>
                                         <?php
                                         foreach ($packages as $package) {
                                         ?>
@@ -247,12 +259,9 @@ $request = $requestModel->getRequestById($request_id);
                                         </option>
                                       </select>
                                     </div>
-                                  </div>
-                                  <div class="row">
-
-                                    <div class="col-sm-5 mt-4">
-
-                                      <div class="form-group">
+                                
+                                    
+                                    <!---  <div class="form-group">
                                         <select class="form-select" id="test1" name="request_test[]" aria-label="Default select example">
                                           <option disabled selected>Choose Test</option>
                                           <?php
@@ -268,7 +277,7 @@ $request = $requestModel->getRequestById($request_id);
 
 
 
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-6">
                                       <br>
                                       <div class="form-group">
                                         <select class="form-select" id="test2" name="request_test[]" aria-label="Default select example">
@@ -283,35 +292,102 @@ $request = $requestModel->getRequestById($request_id);
                                         </select>
                                       </div>
                                     </div>
-                                    <div class="col-1 mt-2">
-
+                                    <div class="col-sm-6">
                                       <div class="form-group">
-                                        <button type="button" style="background-color:crimson;" class="btn btn-danger">
-                                          <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M9.48 9.48a.6.6 0 0 1 .6.6v7.2a.6.6 0 1 1-1.2 0v-7.2a.6.6 0 0 1 .6-.6Zm3 0a.6.6 0 0 1 .6.6v7.2a.6.6 0 1 1-1.2 0v-7.2a.6.6 0 0 1 .6-.6Zm3.6.6a.6.6 0 1 0-1.2 0v7.2a.6.6 0 1 0 1.2 0v-7.2Z"></path>
-                                            <path fill-rule="evenodd" d="M20.28 6.48a1.2 1.2 0 0 1-1.2 1.2h-.6v10.8a2.4 2.4 0 0 1-2.4 2.4h-7.2a2.4 2.4 0 0 1-2.4-2.4V7.68h-.6a1.2 1.2 0 0 1-1.2-1.2v-1.2a1.2 1.2 0 0 1 1.2-1.2h4.2a1.2 1.2 0 0 1 1.2-1.2h2.4a1.2 1.2 0 0 1 1.2 1.2h4.2a1.2 1.2 0 0 1 1.2 1.2v1.2ZM7.82 7.68l-.141.07v10.73a1.2 1.2 0 0 0 1.2 1.2h7.2a1.2 1.2 0 0 0 1.2-1.2V7.75l-.142-.07H7.821Zm-1.94-1.2v-1.2h13.2v1.2H5.88Z" clip-rule="evenodd"></path>
-                                          </svg>
-                                        </button>
+                                        <select class="form-select" id="test3" name="request_test[]" aria-label="Default select example">
+                                          <option disabled selected>Choose Test</option>
+                                          <?php
+                                          foreach ($services as $service) {
+                                          ?>
+                                            <option value="<?php echo $service->id ?>" data-price="<?php echo $service->price ?>"><?php echo $service->name ?></option>
+                                          <?php } ?>
+
+                                          </option>
+                                        </select>
                                       </div>
                                     </div>
+                                    <div class="col-sm-6">
+                                      <div class="form-group">
+                                        <select class="form-select" id="test4" name="request_test[]" aria-label="Default select example">
+                                          <option disabled selected>Choose Test</option>
+                                          <?php
+                                          foreach ($services as $service) {
+                                          ?>
+                                            <option value="<?php echo $service->id ?>" data-price="<?php echo $service->price ?>"><?php echo $service->name ?></option>
+                                          <?php } ?>
 
-                                    <div class="row">
-                                      <div class="col-2 ">
-
-                                        <div class="form-group">
-                                          <button type="button" class="btn btn-secondary">
-                                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                              <path d="M12 5v14"></path>
-                                              <path d="M5 12h14"></path>
-                                            </svg>
-                                            Add more
-                                          </button>
-                                        </div>
+                                          </option>
+                                        </select>
                                       </div>
-
                                     </div>
+                                    <div class="col-sm-6">
+                                      <div class="form-group">
+                                        <select class="form-select" id="test5" name="request_test[]" aria-label="Default select example">
+                                          <option disabled selected>Choose Test</option>
+                                          <?php
+                                          foreach ($services as $service) {
+                                          ?>
+                                            <option value="<?php echo $service->id ?>" data-price="<?php echo $service->price ?>"><?php echo $service->name ?></option>
+                                          <?php } ?>
 
+                                          </option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <div class="form-group">
+                                        <select class="form-select" id="test6" name="request_test[]" aria-label="Default select example">
+                                          <option disabled selected>Choose Test</option>
+                                          <?php
+                                          foreach ($services as $service) {
+                                          ?>
+                                            <option value="<?php echo $service->id ?>" data-price="<?php echo $service->price ?>"><?php echo $service->name ?></option>
+                                          <?php } ?>
 
+                                          </option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <div class="form-group">
+                                        <select class="form-select" id="test7" name="request_test[]" aria-label="Default select example">
+                                          <option disabled selected>Choose Test</option>
+                                          <?php
+                                          foreach ($services as $service) {
+                                          ?>
+                                            <option value="<?php echo $service->id ?>" data-price="<?php echo $service->price ?>"><?php echo $service->name ?></option>
+                                          <?php } ?>
+
+                                          </option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <div class="form-group">
+                                        <select class="form-select" id="test8" name="request_test[]" aria-label="Default select example">
+                                          <option disabled selected>Choose Test</option>
+                                          <?php
+                                          foreach ($services as $service) {
+                                          ?>
+                                            <option value="<?php echo $service->id ?>" data-price="<?php echo $service->price ?>"><?php echo $service->name ?></option>
+                                          <?php } ?>
+
+                                        </select>
+                                        </option>
+                                      </div>
+                                    </div>!-->
+                                    <fieldset class="checkbox-inline">
+                                    <legend class="control-label" for="course_details"> </legend>
+                                    <?php
+                                    foreach ($services as $service) {
+                                    ?>
+                                      <div class="col-sm-12" style="font-size: 15px;">
+                                        <input class="form-check-input" style="border-color: black; font-size: 17px;" name="request_test[]" type="checkbox" id="gridCheck1" value="<?php echo $service->id ?>" data-price="<?php echo $service->price ?>">
+                                        <label class="form-check-label" for="gridCheck1"> <b> <?php echo $service->name ?></b>-(Php&nbsp;<?php echo $service->price ?>.00) </label>
+                                      </div>
+                                    <?php } ?>
+
+                                  </fieldset>
 
                                   </div>
                                 </div>
@@ -477,7 +553,24 @@ $request = $requestModel->getRequestById($request_id);
     }
   </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var checkboxes = document.querySelectorAll('.form-check-input');
+        var totalSumInput = document.getElementById('total');
+        var totalSum = 0;
 
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    totalSum += parseInt(this.getAttribute('data-price'));
+                } else {
+                    totalSum -= parseInt(this.getAttribute('data-price'));
+                }
+                totalSumInput.value = totalSum;
+            });
+        });
+    });
+</script>
 
 </body>
 

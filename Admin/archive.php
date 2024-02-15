@@ -156,13 +156,17 @@ foreach ($requests as $request) {
                 <tbody>
 
                   <?php foreach ($inactivePatients as $patient) { ?>
-                    <tr class="data-row" onclick="" data-type="request" data-date="<?php echo $patient->request_date ?>">
+
+                    <tr class="data-row" onclick="" data-type="request" data-date="<?php echo $request->request_date ?>">
+
                       <th scope="row"><?php echo $patient->id ?></th>
+
                       <td><?php echo $patient->getFullName() ?></td>
                       <td><?php echo $patient->status ?></td>
                       <td><a class="btn btn-secondary">Retrieve</a></td>
                     </tr>
                   <?php } ?>
+
 
 
 

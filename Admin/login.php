@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="keywords" content="Login Form" />
     <!-- //Meta tag Keywords -->
 
+
     <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="../assets/img/log.png" rel="icon">
     <link href="../assets/img/log.png" rel="apple-touch-icon">
@@ -64,12 +65,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <img src="../assets/img/log.png" alt="">
                         </div>
                     </div>
-                    <div class="content-wthree">
-                        <h1 class="card-title">DIAGNOSYS</h1>
-                        <h2>Login Now</h2>
 
+                    <div class="content-wthree">
+                        <center>
+                            <h1 class="card-title" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-style:italic;">DIAGNOSYS</h1><br>
+                            <h2>Login Now</h2>
+                        </center>
                         <form action="login.php" method="POST">
-                            <input type="email" name="register_username" placeholder="Enter Your Email" required>
+                            <input type="username" name="register_username" placeholder="Enter Your Email" required>
                             <input type="password" name="register_password" placeholder="Enter Your Password" style="margin-bottom: 2px;" required>
 
                             <p><a href="forgot-password.php" style="margin-bottom: 15px; display: block; text-align: right;"></a></p>

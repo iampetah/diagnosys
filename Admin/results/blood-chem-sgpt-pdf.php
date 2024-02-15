@@ -25,16 +25,18 @@ $pdf->AddPage();
 
 
 // Set font
-$pdf->SetFont('Arial', 'B', 22);
+$pdf->SetFont('Arial', 'B', 16);
 
 $pdf->SetTextColor(255, 0, 0);
 
 // Title
-$pdf->Image('../../assets/img/logo01.png', 8, 10, 33, 33, 'PNG');
-$pdf->Image('../../assets/img/logo02.png', 170, 10, 38, 38, 'PNG');
+$pdf->Image('../../assets/img/logo01.png',3, 3, 33, 33, 'PNG');
+$pdf->Image('../../assets/img/logo02.png', 173, 3, 38, 38, 'PNG');
+$pdf->SetFont('Arial', 'B', 22);
+$pdf->SetTextColor(255, 0, 0);
 
 $pdf->Cell(193, 10, 'PANABO CITY DIAGNOSTIC CENTER', 0, 1, 'C');
-$pdf->SetFont('Arial', 'B', 12);
+$pdf->SetFont('Arial', 'B', 13);
 $pdf->SetTextColor(0, 0, 0);
 
 $pdf->Cell(190, 3, 'PARTNERSHIP, COMMITMENT, DEVOTION, AND CARE', 0, 1, 'C');
@@ -57,80 +59,80 @@ $pdf->Ln(0);
 
 
 // Table rows
-$pdf->SetFont('Arial', '', 11);
+$pdf->SetFont('Arial', '', 10);
 
 $pdf->Cell(40, 6, 'Firstname', 1);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(85, 6, $request->patient->first_name, 1);
+$pdf->Cell(75, 6, $request->patient->first_name, 1);
 $pdf->SetTextColor(135, 206, 235);
-$pdf->SetFont('Arial', '', 11);
-$pdf->Cell(30,6, 'Family Name', 1);
+$pdf->SetFont('Arial', '', 10);
+$pdf->Cell(30, 6, 'Family Name', 1);
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->SetTextColor(0, 0, 0);
-$pdf->Cell(40, 6, $request->patient->last_name, 1,0,'R');
+$pdf->Cell(50, 6, $request->patient->last_name, 1);
 $pdf->Ln(6);
 $pdf->SetTextColor(135, 206, 235);
-$pdf->SetFont('Arial', '', 11);
+$pdf->SetFont('Arial', '', 10);
 $pdf->Cell(40, 6, 'Address', 1);
 $pdf->SetTextColor(0, 0, 0);
-$pdf->SetFont('Arial', '', 10.5);
-$pdf->Cell(85, 6, $request->patient->barangay . ', ' . $request->patient->city, 1);
+$pdf->SetFont('Arial', '', 12);
+$pdf->Cell(75, 6, $request->patient->barangay . ', ' . $request->patient->city, 1);
 $pdf->SetTextColor(135, 206, 235);
-$pdf->SetFont('Arial', '', 11);
+$pdf->SetFont('Arial', '', 10);
 $pdf->Cell(30, 6, 'Age/Gender', 1);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(40, 6, $request->patient->gender, 1,0,'R');
+$pdf->Cell(50, 6, $request->patient->gender, 1);
 $pdf->Ln(6);
 $pdf->SetTextColor(135, 206, 235);
-$pdf->SetFont('Arial', '', 11);
+$pdf->SetFont('Arial', '', 10);
 $pdf->Cell(40, 6, 'Date Performed', 1);
 $pdf->SetTextColor(0, 0, 0);
 
-$pdf->SetFont('Arial', '', 11);
-$pdf->Cell(85, 6, $request->getResultDate(), 1);
+$pdf->SetFont('Arial', '', 12);
+$pdf->Cell(75, 6, $request->getResultDate(), 1);
 $pdf->SetTextColor(135, 206, 235);
-$pdf->SetFont('Arial', '', 11);
+$pdf->SetFont('Arial', '', 10);
 $pdf->Cell(30, 6, 'Physician', 1);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(40, 6, 'MD', 1,0,'R');
+$pdf->Cell(50, 6, 'MD', 1);
 $pdf->Ln(6);
 $pdf->SetTextColor(135, 206, 235);
-$pdf->SetFont('Arial', '', 11);
+$pdf->SetFont('Arial', '', 10);
 $pdf->Cell(40, 6, 'Mode of Test', 1);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(85, 6, 'Quantitative', 1);
+$pdf->Cell(75, 6, 'Quantitative', 1);
 $pdf->SetTextColor(135, 206, 235);
-$pdf->SetFont('Arial', '', 11);
+$pdf->SetFont('Arial', '', 10);
 $pdf->Cell(30, 6, 'Time', 1);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(40, 6, $request->getResultTime(), 1,0,'R');
+$pdf->Cell(50, 6, $request->getResultTime(), 1);
 
 $pdf->Ln(6);
 $pdf->SetTextColor(135, 206, 235);
-$pdf->SetFont('Arial', '', 11);
+$pdf->SetFont('Arial', '', 10);
 $pdf->Cell(40, 6, 'Examination Taken', 1);
 $pdf->SetTextColor(0, 0, 0);
-$pdf->SetFont('Arial', '', 10.5);
-$pdf->Cell(85, 6, 'FBS,Cholesterol, SUA, Creatinine', 1);
-$pdf->SetTextColor(135, 206, 235);
 $pdf->SetFont('Arial', '', 12);
+$pdf->Cell(75, 6, 'FBS,Cholesterol, SUA, Creatinine', 1);
+$pdf->SetTextColor(135, 206, 235);
+$pdf->SetFont('Arial', '', 10);
 $pdf->Cell(30, 6, 'Specimen', 1);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(40, 6, 'Serum', 1, 0, 'R');
+$pdf->Cell(50, 6, 'Serum', 1, 0, 'R');
 
 
-$pdf->Ln(10);
+$pdf->Ln(12);
 
 
 // Total
 $pdf->SetTextColor(135, 206, 235);
-$pdf->SetFont('Arial', '', 11);
+$pdf->SetFont('Arial', '', 12);
 $pdf->Cell(100, 5, 'Service', 1, 0, 'C');
 
 $pdf->Cell(35, 5, 'Result', 1, 0, 'C');
@@ -141,29 +143,61 @@ $pdf->SetTextColor(0, 0, 0);
 
 $pdf->SetTextColor(50, 200, 50);
 $pdf->Cell(100, 6, 'Blood Chemistry', 1, 0, 'C');
-
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(35, 6, $results["blood_chemistry"], 1, 0, 'C');
+$pdf->SetFont('Arial', '', 12);
+$pdf->SetTextColor(50, 200, 50);
+$pdf->Cell(60, 6, '3.85-5.78 mmol/L', 1, 0, 'C');
 
+$pdf->Ln(6);
+$pdf->SetTextColor(0, 0, 0);
+
+$pdf->SetTextColor(50, 200, 50);
+$pdf->Cell(100, 6, 'Blood Chemistry', 1, 0, 'C');
+$pdf->SetTextColor(0, 0, 0);
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(35, 6, $results["blood_chemistry"], 1, 0, 'C');
+$pdf->SetFont('Arial', '', 12);
+$pdf->SetTextColor(50, 200, 50);
+$pdf->Cell(60, 6, '3.85-5.78 mmol/L', 1, 0, 'C');
+$pdf->Ln(6);
+$pdf->SetTextColor(0, 0, 0);
+
+$pdf->SetTextColor(50, 200, 50);
+$pdf->Cell(100, 6, 'Blood Chemistry', 1, 0, 'C');
+$pdf->SetTextColor(0, 0, 0);
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(35, 6, $results["blood_chemistry"], 1, 0, 'C');
+$pdf->SetFont('Arial', '', 12);
+$pdf->SetTextColor(50, 200, 50);
+$pdf->Cell(60, 6, '3.85-5.78 mmol/L', 1, 0, 'C');
+$pdf->Ln(6);
+$pdf->SetTextColor(0, 0, 0);
+
+$pdf->SetTextColor(50, 200, 50);
+$pdf->Cell(100, 6, 'Blood Chemistry', 1, 0, 'C');
+$pdf->SetTextColor(0, 0, 0);
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(35, 6, $results["blood_chemistry"], 1, 0, 'C');
 $pdf->SetFont('Arial', '', 12);
 $pdf->SetTextColor(50, 200, 50);
 $pdf->Cell(60, 6, '3.85-5.78 mmol/L', 1, 0, 'C');
 
 $pdf->Ln(15);
 $pdf->SetTextColor(135, 206, 235);
-$pdf->SetFont('Arial', '', 11);
-$pdf->Cell(40, 6, 'Examination Taken', 1);
+$pdf->SetFont('Arial', '', 12);
+$pdf->Cell(40, 7, 'Examination Taken', 1);
 $pdf->SetTextColor(0, 0, 0);
-$pdf->SetFont('Arial', 'I', 12);
-$pdf->Cell(75, 6, 'SGPT', 1);
+$pdf->SetFont('Arial', 'I', 13);
+$pdf->Cell(75, 7, 'SGPT', 1);
 $pdf->SetTextColor(135, 206, 235);
-$pdf->SetFont('Arial', '', 11);
-$pdf->Cell(30, 6, 'Specimen', 1);
+$pdf->SetFont('Arial', '', 12);
+$pdf->Cell(30, 7, 'Specimen', 1);
 $pdf->SetTextColor(0, 0, 0);
-$pdf->SetFont('Arial', 'I', 12);
-$pdf->Cell(50, 6, 'Serum', 1, 0, 'R');
-$pdf->Ln(10);
+$pdf->SetFont('Arial', 'I', 14);
+$pdf->Cell(50, 7, 'Serum', 1, 0, 'R');
+$pdf->Ln(13);
 
 
 // Total
@@ -176,15 +210,15 @@ $pdf->Ln(6);
 $pdf->SetTextColor(0, 0, 0);
 
 $pdf->SetTextColor(50, 200, 50);
-$pdf->Cell(100, 7, 'SGPT(Serum Glutamate Pyruvate Transaminase)', 1, 0, 'C');
+$pdf->Cell(100, 6, 'SGPT(Serum Glutamate Pyruvate Transaminase)', 1, 0, 'C');
 
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(35, 7, $results["sgpt"], 1, 0, 'C');
+$pdf->Cell(35, 6, $results["sgpt"], 1, 0, 'C');
 
 $pdf->SetFont('Arial', '', 12);
 $pdf->SetTextColor(50, 200, 50);
-$pdf->Cell(60, 7, '3.85-5.78 mmol/L', 1, 0, 'C');
+$pdf->Cell(60, 6, '3.85-5.78 mmol/L', 1, 0, 'C');
 $pdf->SetFont('Arial', '', 14);
 
 

@@ -326,8 +326,8 @@ $appointments = $appointmentModel->getAppointmentFromPatientId($patient->id);
                         <thead>
                           <tr>
                             <th scope="col">Appointment ID</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Service</th>
+                            <th scope="col">Appointment Date</th>
+                            <th scope="col">Services</th>
                             <th scope="col">Status</th>
                           </tr>
                         </thead>
@@ -337,29 +337,26 @@ $appointments = $appointmentModel->getAppointmentFromPatientId($patient->id);
                               <th scope="row"><?php echo $appointment->id ?></th>
                               <td><?php echo $appointment->appointment_date ?></td>
                               <td>
-                                <?php if (!empty($appointment->services)) { ?>
-                                  <?php if (count($appointment->services) > 1) { ?>
-                                    <div class="btn-group">
-                                      <button type="button" style="padding:0px;" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        See services taken
-                                      </button>
-                                      <ul class="dropdown-menu">
-                                        <?php foreach ($appointment->services as $service) { ?>
-                                          <li><a class="dropdown-item" href="#"><?php echo $service->name ?></a></li>
-                                        <?php } ?>
-                                      </ul>
-                                    </div>
-                                  <?php } else {
-                                    echo $appointment->services[0]->name;
-                                  } ?>
-                                <?php } else {
-                                  echo 'No services';
+                                <?php if (count($appointment->services) > 1) { ?>
+                                  <div class="btn-group">
+                                    <button type="button" style="padding:0px;" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                      See services taken
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                      <?php foreach ($appointment->services as $services) { ?>
+                                        <li><a class="dropdown-item" href="#"><?php echo $services->name ?></a></li>
+                                      <?php } ?>
+                                    </ul>
+                                  </div>
+                                <?php } elseif (isset($appointment->services[0])) { // Check if the array is not empty
+                                  echo $appointment->services[0]->name;
+                                } else {
+                                  echo "No services taken";
                                 } ?>
                               </td>
                               <td><?php echo $appointment->status ?></td>
                             </tr>
                           <?php } ?>
-
                         </tbody>
                       </table>
                     </div>

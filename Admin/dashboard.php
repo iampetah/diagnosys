@@ -3,6 +3,7 @@ require_once 'utils/is_login.php';
 require_once '../Models/EmployeeModel.php';
 require_once '../Models/RequestModel.php';
 require_once '../Models/PatientModel.php';
+require_once '../Models/ServicesModel.php';
 $head_title = 'Dashboard';
 $page_title = 'Dashboard';
 $employeeModel = new EmployeeModel();
@@ -13,23 +14,18 @@ $requestModel = new RequestModel();
 $salesRequestToday = $requestModel->getRequestTodayByStatus(Request::PAID);
 $patientModel = new PatientModel();
 $patients = $patientModel->getAllPatients();
-
-$revenue = 0;
-foreach ($salesRequest as $sales) {
-  $revenue += $sales->total;
-}
 $servicesModel = new ServicesModel();
 $services = $servicesModel->getServiceSales();
 $servicesModel = new ServicesModel();
 $servicesSales = $servicesModel->getServicesByDateAndName();
 $servicesModel->close();
-$dates = [];
-foreach ($servicesSales as $sales) {
-  if (!isset($dates[$sales['date']])) {
-    $dates[$sales['date']] = $sales['date'];
-  }
-}; ?>
 
+$revenue = 0;
+foreach ($salesRequest as $sales) {
+  $revenue += $sales->total;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -214,28 +210,6 @@ foreach ($servicesSales as $sales) {
 
               </div>
             </div><!-- End Reports -->
-
-            <!-- Recent Sales -->
-            <div class="col-12">
-              <div class="card recent-sales overflow-auto">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-
-
-              </div>
-            </div><!-- End Recent Sales -->
             <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
@@ -278,6 +252,28 @@ foreach ($servicesSales as $sales) {
             </div>
           </div>
         </div>
+            <!-- Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+
+
+              </div>
+            </div><!-- End Recent Sales -->
+
             <!-- Top Selling -->
             <div class="col-12">
               <div class="card top-selling overflow-auto">

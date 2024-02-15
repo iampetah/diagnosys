@@ -133,7 +133,7 @@ $appointments = $appointmentModel->getAppointments();
                             <i class="bi bi-eye-fill"></i>
                           </button>
                         </a>
-                        <a href="#" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                    
                         <button onclick='<?php echo "deleteAppointment($appointment->id)" ?>' type="button" class="btn btn-danger">
                           <i class="bi bi-trash3"></i>
                         </button>

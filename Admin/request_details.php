@@ -87,57 +87,64 @@ for ($i = 0; $i < count($request->services); $i++) {
                   <input type="text" class="form-control" id="inputName5" value="<?php echo $request->patient->first_name ?>" readonly>
                 </div>
                 <div class="col-md-4">
+                  <label for="inputName5" class="form-label">Middlename</label>
+                  <input type="text" class="form-control" id="inputName5" value="" readonly>
+                </div>
+                <div class="col-md-3">
                   <label for="inputName5" class="form-label">Sex</label>
                   <input type="text" class="form-control" id="inputName5" value="<?php echo $request->patient->gender ?>" readonly>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <label for="inputName5" class="form-label">Date Of Birth</label>
                   <input type="text" class="form-control" id="inputName5" value="<?php echo $request->patient->birthdate ?>" readonly>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <label for="inputName5" class="form-label">Age</label>
                   <input type="number" class="form-control" id="inputName5" value="<?php echo $request->patient->age ?>" readonly>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <label for="inputName5" class="form-label">Mobile Number</label>
                   <input type="text" class="form-control" id="inputName5" value="<?php echo $request->patient->mobile_number ?>" readonly>
                 </div>
                 <div class="col-md-6">
-                  <label for="inputName5" class="form-label">Province</label>
-                  <input type="text" class="form-control" id="inputName5" value="<?php echo $request->patient->province ?>" readonly>
+                  <label for="inputEmail5" class="form-label">Building/ House Number</label>
+                  <input type="email" class="form-control" id="inputEmail5" value="<?php echo $request->patient->house_no ?>" readonly>
                 </div>
                 <div class="col-md-6">
-                  <label for="inputName5" class="form-label">City</label>
-                  <input type="text" class="form-control" id="inputName5" value="<?php echo $request->patient->city ?>" readonly>
-                </div>
-                <div class="col-md-6">
-                  <label for="inputEmail5" class="form-label">Barangay</label>
-                  <input type="email" class="form-control" id="inputEmail5" value="<?php echo $request->patient->barangay ?>" readonly>
+                  <label for="inputPassword5" class="form-label">Subdivision/Street Name</label>
+                  <input type="text" class="form-control" id="inputPassword5" value="<?php echo $request->patient->subdivision ?>" readonly>
                 </div>
                 <div class="col-md-6">
                   <label for="inputPassword5" class="form-label">Purok</label>
                   <input type="text" class="form-control" id="inputPassword5" value="<?php echo $request->patient->purok ?>" readonly>
                 </div>
                 <div class="col-md-6">
-                  <label for="inputEmail5" class="form-label">Subdivision/Street Name</label>
-                  <input type="email" class="form-control" id="inputEmail5" value="<?php echo $request->patient->subdivision ?>" readonly>
+                  <label for="inputEmail5" class="form-label">Barangay</label>
+                  <input type="email" class="form-control" id="inputEmail5" value="<?php echo $request->patient->barangay ?>" readonly>
                 </div>
                 <div class="col-md-6">
-                  <label for="inputPassword5" class="form-label">Building/ House Number</label>
-                  <input type="text" class="form-control" id="inputPassword5" value="<?php echo $request->patient->house_no ?>" readonly>
+                  <label for="inputName5" class="form-label">City</label>
+                  <input type="text" class="form-control" id="inputName5" value="<?php echo $request->patient->city ?>" readonly>
                 </div>
+                <div class="col-md-6">
+                  <label for="inputName5" class="form-label">Province</label>
+                  <input type="text" class="form-control" id="inputName5" value="<?php echo $request->patient->province ?>" readonly>
+                </div>
+               
+               
+                
                 <div class="col-12">
                   <label for="inputName5" class="form-label">Service Avail</label>
                   <input type="text" class="form-control" style="height:100px;" id="inputPassword5" value="<?php echo $servicesList ?>" readonly>
                 </div>
                 <div class="col-md-6">
-                  <label for="inputPassword5" class="form-label">ID</label>
-                  <input type="text" class="form-control" id="inputPassword5" value="" readonly>
+                  <label for="inputName5" class="form-label">Type of ID</label>
+                  <input type="text" class="form-control" id="inputName5" value="" readonly>
                 </div>
                 <div class="col-12">
-                 
+                  <label for="inputName5" class="form-label">ID</label>
                   <img src='<?php echo "../uploads/" . $request->patient->image_url ?>' style=" width: 85.6mm;
-  height: 54mm;" alt="">
+  height: 54mm;" alt="asdf">
                 </div>
               </div>
 

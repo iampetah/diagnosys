@@ -136,12 +136,16 @@ $page = 'add_request_form'; // for the components/sidebar.html
                       </script>
                       <div class="fields">
                         <div class="input-field">
-                          <label>Lastname*</label>
+                        <label>Lastname*(Jr.Sr. and etc...)</label>
                           <input type="text" id='last_name' name="request_lastname" placeholder="Enter your Lastame" required>
                         </div>
                         <div class="input-field">
                           <label>Firstname*</label>
                           <input type="text" id="first_name" name="request_firstname" placeholder="Enter your Firstname" required>
+                        </div>
+                        <div class="input-field">
+                          <label>Middlename</label>
+                          <input type="text" id='first_name' name="request_firstname" placeholder="Enter your Middlename">
                         </div>
                         <div class="input-field">
                           <label>Sex*</label>
@@ -157,11 +161,24 @@ $page = 'add_request_form'; // for the components/sidebar.html
                         </div>
                         <div class="input-field">
                           <label>Age*</label>
-                          <input type="number" onmousemove="FindAge()" id="age" name="request_age" placeholder="Your age " required>
+                          <input type="number" onmousemove="FindAge()" id="age" name="request_age" placeholder="Your age " required readonly>
                         </div>
                         <div class="input-field">
                           <label>Mobile Number*</label>
                           <input type="tel" id='mobile_number' name="request_phone" pattern="[0-9]{11}" pmaxlength="11" oninput="validateNumber(event)" placeholder="Enter mobile number" required>
+                        </div>
+                        <div class="input-field">
+                          <label>Building/ House Number</label>
+                          <input type="text" id="house_no" name="request_house_no" placeholder="Enter your Building/ House Number">
+                        </div>
+                        <div class="input-field">
+                          <label>Subdivision/Street Name</label>
+                          <input type="text" id="subdivision" name="request_subdivision" placeholder="Enter your Subdivision/Street Name">
+                        </div>
+
+                        <div class="input-field">
+                          <label>Purok*</label>
+                          <input type="text" id="purok" name="request_purok" placeholder="Enter your Purok" required>
                         </div>
 
                         <div class="input-field">
@@ -188,22 +205,9 @@ $page = 'add_request_form'; // for the components/sidebar.html
 
                           </select>
                         </div>
-                        <div class="input-field">
-                          <label>Purok*</label>
-                          <input type="text" id="purok" name="request_purok" placeholder="Enter your Purok" required>
-                        </div>
-                        <div class="input-field">
-                          <label>Subdivision/Street Name</label>
-                          <input type="text" id="subdivision" name="request_subdivision" placeholder="Enter your Subdivision/Street Name">
-                        </div>
 
                         <div class="input-field">
-                          <label>Building/ House Number</label>
-                          <input type="text" id="house_no" name="request_house_no" placeholder="Enter your Building/ House Number">
-                        </div>
-
-                        <div class="input-field">
-                          <label>Select type of ID*</label>
+                          <label>Select type of ID</label>
                           <select required>
                             <option disabled selected>Select ID</option>
                             <option value="">Voter's ID</option>
@@ -211,15 +215,15 @@ $page = 'add_request_form'; // for the components/sidebar.html
                             <option value="">Philippine Identification Card</option>
                             <option value="">Barangay ID</option>
                             <option value="">Passport</option>
-                            <option value="">Other</option>
+                            <option value="">Others</option>
                           </select>
                         </div>
 
                         <div class="form-group mb-3">
 
-                          <label for="inputNumber" class="col-sm-8 col-form-label ">Upload Image of your ID*</label>
+                          <label for="inputNumber" class="col-sm-8 col-form-label ">Upload Image of your ID</label>
                           <div class="col-sm-12">
-                            <input class="form-control" name="fileToUpload" type="file" id="fileToUpload" required>
+                            <input class="form-control" name="fileToUpload" type="file" id="fileToUpload">
 
 
                           </div>
@@ -248,8 +252,8 @@ $page = 'add_request_form'; // for the components/sidebar.html
                                       <thead>
                                         <tr>
 
-                                          <th scope="col">Test</th>
-                                          <th scope="col">Price</th>
+                                          <th scope="col">Service</th>
+                                          <th scope="col">Amount</th>
                                         </tr>
                                       </thead>
                                       <tbody>
