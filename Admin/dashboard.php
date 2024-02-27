@@ -78,7 +78,7 @@ foreach ($salesRequest as $sales) {
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Total Request Form <span>| <span id="request_form_indicator">
+                  <h5 class="card-title"> Requests <span>| <span id="request_form_indicator">
                         Today
                       </span> </span></h5>
 
@@ -120,7 +120,7 @@ foreach ($salesRequest as $sales) {
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title"> Profits <span>| <span>| <span id="profits_indicator">
+                  <h5 class="card-title"> Appointments <span>| <span>| <span id="profits_indicator">
                           Today
                         </span></span></h5>
 
@@ -198,8 +198,17 @@ foreach ($salesRequest as $sales) {
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Reports</h5>
-
+                  <h5 class="card-title">Sales Report</h5>
+                  <div class="row mb-3">
+                    <label for="inputDate" class="col-sm-2 col-form-label">Start</label>
+                    <div class="col-sm-4">
+                      <input type="date" class="form-control" id="start-date" onchange="filterTable()">
+                    </div>
+                    <label for="inputDate" class="col-sm-2 col-form-label">End</label>
+                    <div class="col-sm-4">
+                      <input type="date" class="form-control" id="end-date" onchange="filterTable()">
+                    </div>
+                  </div>
                   <!-- Line Chart -->
                   <div id="reportsChart"></div>
 
@@ -210,10 +219,24 @@ foreach ($salesRequest as $sales) {
 
               </div>
             </div><!-- End Reports -->
+            
+      
+            
             <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
+
               <h5 class="card-title">Services Availed</h5>
+              <div class="row mb-3">
+                    <label for="inputDate" class="col-sm-2 col-form-label">Start</label>
+                    <div class="col-sm-4">
+                      <input type="date" class="form-control" id="start-date" onchange="filterTable()">
+                    </div>
+                    <label for="inputDate" class="col-sm-2 col-form-label">End</label>
+                    <div class="col-sm-4">
+                      <input type="date" class="form-control" id="end-date" onchange="filterTable()">
+                    </div>
+                  </div>
 
               <!-- Bar Chart -->
               <div id="barChart"></div>

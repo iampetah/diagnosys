@@ -1,14 +1,19 @@
 <?php
 require('../../fpdf186/fpdf.php');
 require '../../Models/RequestModel.php';
+require_once '../../Models/EmployeeModel.php';
 
 
+$employeeModel = new EmployeeModel();
+$employee = $employeeModel->getEmployeeById($_GET['user_id']);
+$request_ids = $_GET['request_ids'];
 // Create a PDF object
 $pdf = new FPDF('P', 'mm', 'Letter');
 
 
 $requestModel = new RequestModel();
 $requests = $requestModel->getRequestsByStatus(Request::PAID);
+
 $pdf->AddPage();
 //page width = 200
 // Set font
@@ -39,12 +44,7 @@ $pdf->Ln(5);
 
 
 $services = '';
-//foreach ($request->services as $service) {
-//  $services .= $service->name . ', ';
-//  $pdf->Cell(128, 10, $service->name, 1);
-//  $pdf->Cell(70, 10, $service->price, 1);
-//  $pdf->Ln(10);
-//}
+
 
 
 $pdf->Ln(10);
@@ -58,26 +58,37 @@ $pdf->Cell(30, 10, "Status", 1, 0, "C");
 $pdf->Ln(10);
 $pdf->SetFont("Arial", '', 10);
 
-foreach ($requests as $request) {
-  $pdf->Cell(20, 10, $request->id, 1, 0, 'C');
-  $pdf->Cell(35, 10, strtoupper($request->patient->last_name), 1, 0, "C");
-  $pdf->Cell(35, 10, strtoupper($request->patient->first_name), 1, 0, "C");
-  $pdf->Cell(50, 10, "", 1, 0, "C");
-  $pdf->Cell(30, 10, $request->total, 1, 0, "C");
-  $pdf->Cell(30, 10, strtoupper($request->status), 1, 0, "C");
-  $pdf->Ln(10);
+foreach ($request_ids as $request_id) {
+  $requestModel = new RequestModel();
+  $request = $requestModel->getRequestById($request_id);
+
+  $no_of_lines = count($request->services);
+  $pdf->Cell(20, 8 * $no_of_lines, $request->id, 1, 0, 'C');
+  $pdf->Cell(35, 8 * $no_of_lines, strtoupper($request->patient->last_name), 1, 0, "C");
+  $pdf->Cell(35, 8 * $no_of_lines, strtoupper($request->patient->first_name), 1, 0, "C");
+  $services = '';
+  foreach ($request->services as $service) {
+    $services .= $service->name . ",\n";
+  }
+  $pdf->MultiCell(50, 8, $services, 1, "C");
+  $pdf->SetXY(150, $pdf->GetY() - 8 * $no_of_lines);
+
+  $pdf->Cell(30, 8 * $no_of_lines, 'Php  '.$request->total.'.00', 1, 0, "R");
+  $pdf->Cell(30, 8 * $no_of_lines, strtoupper($request->status), 1, 0, "C");
+  $pdf->Ln(8 * $no_of_lines);
 }
 
 
 
 
 // Total
+$noOfChar = strlen($employee->getFullName());
 
 $pdf->Ln(20);
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(25, 3, '', 0, 0);
-$pdf->Cell(140, 3,'Evelyn Nuyad' , 0, 0);
-$pdf->Cell(190, 3, '', 0, 1);
+$pdf->Cell(20, 3, '', 0, 0);
+$pdf->Cell(140 - $noOfChar, 3, 'Ms. EVELYN NUYAD', 0, 0);
+$pdf->Cell(190, 3, $employee->getFullName(), 0, 1);
 $pdf->Cell(135, -2, '____________________________________', 0, 0);
 $pdf->Cell(55, -2, '__________________________', 0, 1);
 $pdf->SetFont('Arial', '', 8);

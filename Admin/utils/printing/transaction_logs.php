@@ -2,11 +2,13 @@
 require_once '../../../Models/RequestModel.php';
 require('../../../fpdf186/fpdf.php');
 require_once '../../../Models/EmployeeModel.php';
+require_once '../is_login.php';
 
+$id = $_SESSION['id'];
 $requestModel = new RequestModel();
 $requests = $requestModel->getRequests();
 $employeeModel = new EmployeeModel();
-
+$employee = $employeeModel->getEmployeeById($id);
 $line_height = 8;
 $pdf = new FPDF('P', 'mm', 'Letter');
 
@@ -76,20 +78,21 @@ foreach ($requests as $request) {
   $x = $pdf->GetX();
   $pdf->SetXY($x + 55, $y - $row_height);
   //$pdf->SetY($y - 16);
-  $pdf->MultiCell(35, $row_height, $request->total.'.00', 1, 0, 'R  ');
+  $pdf->MultiCell(35,$row_height, '     Php  '. $request->total . '.00', 1, 0, 'R  ');
   $x = $pdf->GetX();
   $pdf->SetXY($x + 90, $y - $row_height);
   $pdf->MultiCell(35, $row_height, $started_date, 1, 0, 'C');
   $pdf->SetXY($x + 125, $y - $row_height);
-  $pdf->MultiCell(35, $row_height, $started_time, 1, 0, 'C');
+  $pdf->MultiCell(35, $row_height,'            '. $started_time, 1, 0, 'C');
   $pdf->SetXY($x + 160, $y - $row_height);
-  $pdf->MultiCell(35, $row_height, $result_time, 1, 0, 'C');
+  $pdf->MultiCell(35, $row_height,'            '. $result_time, 1, 0, 'C');
   $pdf->Ln(0);
 }
 $pdf->Ln(20);
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(25, 3, '', 0, 0);
-$pdf->Cell(140, 3,'Evelyn Nuyad' , 0, 0);
+$pdf->Cell(20, 3, '', 0, 0);
+$pdf->Cell(138 - (strlen($employee->getFullName())), 3, 'Ms. EVELYN NUYAD', 0, 0);
+$pdf->Cell(140, 3, $employee->getFullName(), 0, 0);
 $pdf->Cell(190, 3, '', 0, 1);
 $pdf->Cell(135, -2, '____________________________________', 0, 0);
 $pdf->Cell(55, -2, '__________________________', 0, 1);

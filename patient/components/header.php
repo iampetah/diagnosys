@@ -38,7 +38,7 @@ foreach ($paidRequests as $request) {
   <div class="d-flex align-items-center justify-content-between">
     <a href="index.php" class="logo d-flex align-items-center">
       <img src="../assets/img/log.png" alt="" style="width:40px; height:60px;" />
-      <span class="d-none d-lg-block">Diagnosys </span>
+      <span class="d-none d-lg-block">DIAGNOSYS</span>
     </a>
     <i class="bi bi-list toggle-sidebar-btn"></i>
   </div>

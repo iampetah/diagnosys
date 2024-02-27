@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="content-wthree">
                         <center>
-                        <h2 class="card-title">DIAGNOSYS</h2><br>
+                        <h1 class="card-title" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-style:italic;">DIAGNOSYS</h1><br>
                         <h2 class="card-title">Register Now</h2>
 
                         </center>

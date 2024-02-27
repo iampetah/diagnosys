@@ -104,15 +104,19 @@ $request = $requestModel->getRequestById($_GET['request_id']);
             <!-- Multi Columns Form -->
             <form action="#" class="row g-3">
               <div class="col-md-4">
-                <label for="inputName5" class="form-label">Lastname</label>
+                <label for="inputName5" class="form-label">Last name</label>
                 <input type="text" class="form-control" id="inputName5" value="<?php echo $request->patient->last_name ?>" readonly />
               </div>
               <div class="col-md-4">
-                <label for="inputName5" class="form-label">Firstname</label>
+                <label for="inputName5" class="form-label">First name</label>
                 <input type="text" class="form-control" id="inputName5" value="<?php echo $request->patient->first_name ?>" readonly />
               </div>
-              <div class="col-md-4">
-                <label for="inputName5" class="form-label">Middlename</label>
+              <div class="col-md-3">
+                <label for="inputName5" class="form-label">Middle name</label>
+                <input type="text" class="form-control" id="inputName5" value="" readonly />
+              </div>
+              <div class="col-md-1">
+                <label for="inputName5" class="form-label">Suffix</label>
                 <input type="text" class="form-control" id="inputName5" value="" readonly />
               </div>
               <div class="col-md-3">
@@ -131,32 +135,31 @@ $request = $requestModel->getRequestById($_GET['request_id']);
                 <label for="inputName5" class="form-label">Mobile Number</label>
                 <input type="text" class="form-control" id="inputName5" value="<?php echo $request->patient->mobile_number ?>" readonly />
               </div>
-
               <div class="col-md-6">
-                  <label for="inputEmail5" class="form-label">Building/ House Number</label>
-                  <input type="email" class="form-control" id="inputEmail5" value="<?php echo $request->patient->house_no ?>" readonly>
-                </div>
-                <div class="col-md-6">
-                  <label for="inputPassword5" class="form-label">Subdivision/Street Name</label>
-                  <input type="text" class="form-control" id="inputPassword5" value="<?php echo $request->patient->subdivision ?>" readonly>
-                </div>
-                <div class="col-md-6">
-                  <label for="inputPassword5" class="form-label">Purok</label>
-                  <input type="text" class="form-control" id="inputPassword5" value="<?php echo $request->patient->purok ?>" readonly>
-                </div>
-                <div class="col-md-6">
-                  <label for="inputEmail5" class="form-label">Barangay</label>
-                  <input type="email" class="form-control" id="inputEmail5" value="<?php echo $request->patient->barangay ?>" readonly>
-                </div>
-                <div class="col-md-6">
-                  <label for="inputName5" class="form-label">City</label>
-                  <input type="text" class="form-control" id="inputName5" value="<?php echo $request->patient->city ?>" readonly>
-                </div>
-                <div class="col-md-6">
-                  <label for="inputName5" class="form-label">Province</label>
-                  <input type="text" class="form-control" id="inputName5" value="<?php echo $request->patient->province ?>" readonly>
-                </div>
-               
+                <label for="inputEmail5" class="form-label">Building/ House Number</label>
+                <input type="email" class="form-control" id="inputEmail5" value="<?php echo $request->patient->house_no ?>" readonly>
+              </div>
+              <div class="col-md-6">
+                <label for="inputPassword5" class="form-label">Subdivision/Street Name</label>
+                <input type="text" class="form-control" id="inputPassword5" value="<?php echo $request->patient->subdivision ?>" readonly>
+              </div>
+              <div class="col-md-6">
+                <label for="inputPassword5" class="form-label">Purok</label>
+                <input type="text" class="form-control" id="inputPassword5" value="<?php echo $request->patient->purok ?>" readonly>
+              </div>
+              <div class="col-md-6">
+                <label for="inputEmail5" class="form-label">Barangay</label>
+                <input type="email" class="form-control" id="inputEmail5" value="<?php echo $request->patient->barangay ?>" readonly>
+              </div>
+              <div class="col-md-6">
+                <label for="inputName5" class="form-label">City</label>
+                <input type="text" class="form-control" id="inputName5" value="<?php echo $request->patient->city ?>" readonly>
+              </div>
+              <div class="col-md-6">
+                <label for="inputName5" class="form-label">Province</label>
+                <input type="text" class="form-control" id="inputName5" value="<?php echo $request->patient->province ?>" readonly>
+              </div>
+
               <div class="col-12">
                 <label for="inputName5" class="form-label">Service Avail</label>
                 <input type="text" class="form-control" style="height: 100px" id="inputPassword5" value=" <?php foreach ($request->services as $service) {
@@ -205,10 +208,10 @@ $request = $requestModel->getRequestById($_GET['request_id']);
               <input type="text" class="form-control" placeholder="Input Insurance " name="insurance" />
               <label for="inputPassword5" class="form-label">Money</label>
               <label class="col" for="" style=" position:absolute; margin-top:35px; margin-left:-45px; font-size: 20px;  ">&#x20B1;</label>
-              <input type="number" class="form-control" style="text-indent:10px;" id="number1" oninput="calculateChange()" placeholder="Input Money" name="payment" required />
+              <input type="number" class="form-control" style="text-indent:13px;" id="number1" oninput="calculateChange()" placeholder="Input Money" name="payment" required />
               <label for="inputPassword5" class="form-label">Total Amount</label>
               <label class="col" for="" style=" position:absolute; margin-top:35px; margin-left:-95px; font-size: 20px;  ">&#x20B1;</label>
-              <input type="number" name="total_amount" style="text-indent:10px;" class="form-control" id="number2" value="<?php echo $request->total ?>.00" readonly />
+              <input type="number" name="total_amount" style="text-indent:13px;" class="form-control" id="number2" value="<?php echo $request->total ?>.00" readonly />
               <label for="inputPassword5" class="form-label">Change</label>
               <label class="col" for="" style=" position:absolute; margin-top:35px; margin-left:-55px; font-size: 20px;  ">&#x20B1;</label>
               <input type="number" class="form-control" value="0.00" style="text-indent:10px;" id="result" readonly />
@@ -256,7 +259,7 @@ $request = $requestModel->getRequestById($_GET['request_id']);
             id: <?php echo $request->id ?>,
           })
         }).then(() => {
-          var pdfWindow = window.open("generatePdf.php?request_id=<?php echo $request->id ?>", "_blank");
+          var pdfWindow = window.open("generatePdf.php?request_id=<?php echo $request->id ?>&user_id=<?php echo $_SESSION['id'] ?>", "_blank");
           pdfWindow.print();
           window.location.href = "cashier-payment-list.php";
         });
